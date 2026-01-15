@@ -16,7 +16,7 @@ struct Film: Codable, Identifiable {
     
     let releaseYear: String
     let score: String
-    let duration: Int
+    let duration: String
     let image: String
     let bannerImage: String
     
