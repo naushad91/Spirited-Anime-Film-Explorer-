@@ -20,7 +20,7 @@ struct Film: Codable, Identifiable,Equatable {
     let image: String
     let bannerImage: String
     
-    let people: [String]
+    let people: [String]?
     
     enum CodingKeys: String, CodingKey {
         case id, title, image, description, director, producer,people

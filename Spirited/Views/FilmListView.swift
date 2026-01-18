@@ -11,8 +11,8 @@ struct FilmListView: View {
     
     // films: [Film]
     
-    @State private var filmsViewModel = FilmsViewModel()
-    
+//    @State private var filmsViewModel = FilmsViewModel() Not good here, need Dependency Injection
+    var filmsViewModel = FilmsViewModel()
     var body: some View {
         NavigationStack {
             switch filmsViewModel.state {
@@ -42,6 +42,10 @@ struct FilmListView: View {
        
 }
 
-#Preview {
-    FilmListView()
-}
+    #Preview {
+        @State @Previewable var vm =
+            FilmsViewModel(service: DefaultGhibliService())
+
+        FilmListView(filmsViewModel: vm)
+    }
+

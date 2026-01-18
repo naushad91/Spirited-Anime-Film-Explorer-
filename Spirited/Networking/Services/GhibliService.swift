@@ -8,6 +8,7 @@
 import Foundation
 
 
-protocol GhibliService {
+protocol GhibliService:Sendable {
     func fetchFilms() async throws -> [Film]
+    func fetchPerson(from url: String) async throws -> Person
 }
