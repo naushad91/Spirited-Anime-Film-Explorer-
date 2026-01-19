@@ -30,16 +30,20 @@ struct MockGhibliService: GhibliService {
     }
     
     // MARK: - GhibliService conformance
-    
     func fetchFilms() async throws -> [Film] {
-        return try loadSampleData().films
-    }
-    
-    func fetchPerson(from url: String) async throws -> Person {
         let data = try loadSampleData()
-        guard let person = data.people.first(where: { $0.url == url }) else {
-            throw APIError.invalidResponse
-        }
-        return person
+        return data.films
     }
+
+    func fetchPerson(from URLString: String) async throws -> Person {
+        let data = try loadSampleData()
+        return data.people.first!
+    }
+
+    // MARK: - preview/testing only
+    func fetchFilm() -> [Film] {
+        let data = try! loadSampleData()
+        return data.films
+    }
+
 }

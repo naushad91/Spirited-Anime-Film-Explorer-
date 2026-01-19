@@ -11,21 +11,28 @@ import Observation
 @Observable
 class FilmDetailViewModel {
 
+    enum State:Equatable {
+        case idle
+        case loading
+        case loaded([Person])
+        case error(String)
+    }
+
     let service: GhibliService
     var people: [Person] = []
-    var isLoading = false
-    var errorMessage: String?
+    var state : State = .idle
 
     init(service: GhibliService = DefaultGhibliService()) {
         self.service = service
     }
 
     func fetch(for film: Film) async {
-        isLoading = true
-        errorMessage = nil
+
+        state = .loading
+        var loadedPeople: [Person] = []
         
         do {
-            let results = try await withThrowingTaskGroup(of: Person.self) { group in
+            try await withThrowingTaskGroup(of: Person.self) { group in
                 
                 for personInfoURL in film.people {
                     group.addTask {
@@ -33,22 +40,20 @@ class FilmDetailViewModel {
                     }
                 }
                 
-                var fetchedPeople: [Person] = []
-                
+                // collect results as they complete
                 for try await person in group {
-                    fetchedPeople.append(person)
+                    loadedPeople.append(person)
                 }
-                
-                return fetchedPeople
             }
-            
-            self.people = results
-            isLoading = false
-            
-        } catch {
-            self.errorMessage = error.localizedDescription
-            self.isLoading = false
-        }
+            state = .loaded(loadedPeople)
+
+        } catch let error as APIError {
+        self.state = .error(error.errorDescription ?? "unknown error")
+    } catch {
+        self.state = .error("unknown error")
+    }
+
+
     }
 }
 
