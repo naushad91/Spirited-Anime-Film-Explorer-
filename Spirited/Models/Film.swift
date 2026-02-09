@@ -30,3 +30,19 @@ struct Film: Codable, Identifiable,Equatable {
         
     }
 }
+
+import Playgrounds
+
+#Playground {
+    let url = URL(string: "https://ghibliapi.vercel.app/films" )!
+                  
+    let (data,response) = try await URLSession.shared.data(from: url)
+    
+    do{
+        try JSONDecoder().decode([Film].self, from: data)
+    }
+    catch{
+        print(error)
+    }
+                  
+}
