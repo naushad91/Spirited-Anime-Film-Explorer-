@@ -34,15 +34,16 @@ struct Film: Codable, Identifiable,Equatable {
 import Playgrounds
 
 #Playground {
-    let url = URL(string: "https://ghibliapi.vercel.app/films" )!
-                  
-    let (data,response) = try await URLSession.shared.data(from: url)
     
-    do{
-        try JSONDecoder().decode([Film].self, from: data)
-    }
-    catch{
+    let url = URL(string: "https://ghibliapi.vercel.app/films")!
+    
+    do {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let films = try JSONDecoder().decode([Film].self, from: data)
+        // Use the result so it isn't warned as unused
+        print("Decoded \(films.count) films")
+    } catch {
         print(error)
     }
-                  
 }

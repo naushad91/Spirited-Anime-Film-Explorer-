@@ -57,3 +57,23 @@ class FilmDetailViewModel {
     }
 }
 
+import Playgrounds
+
+#Playground {
+    let service = MockGhibliService()
+    let vm = FilmDetailViewModel(service: service)
+    
+    let film = service.fetchFilm().first!
+    await vm.fetch(for: film)
+    
+    switch vm.state {
+        case .loading: print("loading")
+        case .idle: print("idle")
+        case .loaded(let people):
+            for person in people {
+                print(person)
+            }
+        case .error(let error): print(error)
+    }
+    
+}
