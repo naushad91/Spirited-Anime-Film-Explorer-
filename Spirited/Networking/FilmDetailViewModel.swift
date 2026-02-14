@@ -18,7 +18,7 @@ class FilmDetailViewModel {
         case error(String)
     }
 
-    let service: GhibliService
+    private let service: GhibliService
     var people: [Person] = []
     var state : State = .idle
 
@@ -63,7 +63,7 @@ import Playgrounds
     let service = MockGhibliService()
     let vm = FilmDetailViewModel(service: service)
     
-    let film = service.fetchFilm().first!
+    let film = service.fetchFilm()
     await vm.fetch(for: film)
     
     switch vm.state {
