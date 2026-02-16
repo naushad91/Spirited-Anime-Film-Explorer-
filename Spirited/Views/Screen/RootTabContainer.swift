@@ -11,6 +11,7 @@ struct RootTabContainer: View {
 
     @State private var selectedTab = 0
     @State private var filmsViewModel = FilmsViewModel()
+    
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -19,11 +20,13 @@ struct RootTabContainer: View {
 
                 NavigationStack {
                     FilmsScreen(filmsViewModel: filmsViewModel)
+                      
                 }
                 .tag(0)
-
+                
+                
                 NavigationStack {
-                    FavouritesScreen()
+                    FavoritesScreen(filmsViewModel: filmsViewModel)
                 }
                 .tag(1)
 
