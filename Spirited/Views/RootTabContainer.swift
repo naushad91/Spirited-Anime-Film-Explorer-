@@ -10,6 +10,7 @@ import SwiftUI
 struct RootTabContainer: View {
 
     @State private var selectedTab = 0
+    @State private var filmsViewModel = FilmsViewModel()
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -17,7 +18,7 @@ struct RootTabContainer: View {
             TabView(selection: $selectedTab) {
 
                 NavigationStack {
-                    FilmListView()
+                    FilmsScreen(filmsViewModel: filmsViewModel)
                 }
                 .tag(0)
 
@@ -31,10 +32,8 @@ struct RootTabContainer: View {
                 }
                 .tag(2)
 
-               
-              SearchScreen()
-                
-                .tag(3)
+                SearchScreen()
+                    .tag(3)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
 
