@@ -49,7 +49,7 @@ struct FilmListView: View {
 
     #Preview {
         @State @Previewable var vm =
-            FilmsViewModel(service: DefaultGhibliService())
+            FilmsViewModel(service: MockGhibliService())
 
         FilmListView(filmsViewModel: vm)
     }
