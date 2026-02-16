@@ -14,9 +14,13 @@ struct FilmImageView: View {
     var body: some View {
         AsyncImage(url: URL(string: urlPath)) { phase in
             switch phase {
+            
             case .empty:
-                Color.gray
-
+                              Color(white: 0.8)
+                                  .overlay {
+                                      ProgressView()
+                                          .controlSize(.large)
+                                  }
             case .success(let image):
                 image
                     .resizable()

@@ -16,49 +16,36 @@ struct FilmDetailScreen: View {
         
         VStack{
             
-            AsyncImage(url: URL(string: film.bannerImage)) { phase in
-                switch phase {
-                case .empty:
-                    Color.gray
-
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFit()
-
-                case .failure(_):
-                    Text("Could not get image")
-
-                @unknown default:
-                    fatalError()
+            FilmImageView(urlPath: film.bannerImage)
+                              .frame(height: 300)
+                              .containerRelativeFrame(.horizontal)
+            
+            VStack(alignment: .leading){
+                Text(film.title)
+                
+                Divider()
+                
+                switch viewModel.state {
+                    
+                    
+                case .idle:
+                    EmptyView()
+                    
+                case .loading:
+                    ProgressView()
+                    
+                case .loaded(let people):
+                    ForEach(people) { person in
+                        Text(person.name)
+                    }
+                    
+                case .error(let error):
+                    Text(error)
+                        .foregroundStyle(.pink)
                 }
-            }
-            .frame(height: 200)
-
-            
-            Text(film.title)
-            
-            Divider()
-            
-            switch viewModel.state {
-               
-
-            case .idle:
-                EmptyView()
-
-            case .loading:
-                ProgressView()
-
-            case .loaded(let people):
-                ForEach(people) { person in
-                    Text(person.name)
-                }
-
-            case .error(let error):
-                Text(error)
-                    .foregroundStyle(.pink)
             }
         }
+        .padding(20)
         .task {
             await viewModel.fetch(for: film)
         }
