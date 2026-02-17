@@ -8,34 +8,29 @@
 import SwiftUI
 
 struct FilmListView: View {
-    
-    
-    
-//    @State private var filmsViewModel = FilmsViewModel() Not good here, need Dependency Injection
-//    var filmsViewModel = FilmsViewModel()
     var films: [Film]
     let favouritesViewModel: FavouritesViewModel
-    var body: some View {
-      
-            
-                    List(films) { film in
-                        NavigationLink(value: film) {
-                            FilmRow(film: film, favouritesViewModel: favouritesViewModel)
-                        }
-                        .listRowBackground(Color(.systemBackground))
-                        .listRowSeparator(.hidden)
-                    }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
-                    .navigationDestination(for: Film.self) { film in
-                        FilmDetailScreen(film: film, favouritesViewModel: favouritesViewModel)
-                    }
-                 
-                    
-    }
-}
 
-//#Preview {
+    var body: some View {
+        List(films) { film in
+            NavigationLink(value: film) {
+                FilmRow(film: film, favouritesViewModel: favouritesViewModel)
+            }
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+            .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+        }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
+        .background(LinearGradient.warmBackground)
+        .navigationDestination(for: Film.self) { film in
+            FilmDetailScreen(
+                film: film,
+                favouritesViewModel: favouritesViewModel
+            )
+        }
+    }
+}//#Preview {
 //    @State @Previewable var vm =
 //        FilmsViewModel(service: DefaultGhibliService())
 //

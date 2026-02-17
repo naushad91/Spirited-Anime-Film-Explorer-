@@ -14,38 +14,34 @@ struct FilmsScreen: View {
         
     var body: some View {
         ZStack {
-            // Soft background gradient
-            LinearGradient(
-                colors: [Color(.systemBackground), Color(.systemGray6)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-
+            LinearGradient.warmBackground
+                .ignoresSafeArea()
             Group {
+             
                 switch filmsViewModel.state {
                     
                 case .idle:
                     VStack(spacing: 16) {
                         Image(systemName: "film.stack")
                             .font(.system(size: 64))
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.warmGoldMid.opacity(0.6))
                         Text("No Films yet")
                             .font(.title3)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.warmTextSoft.opacity(0.6))
                     }
                     
                 case .loading:
-                    VStack(spacing: 20) {
+                    VStack(spacing: 16) {
                         ProgressView()
                             .scaleEffect(1.2)
+                            .tint(Color.warmGoldDeep)
                         Text("Loading ...")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.warmTextSoft.opacity(0.6))
                     }
                     
                 case .loaded(let films):
-                    FilmListView(films: films,favouritesViewModel: favouritesViewModel)
+                    FilmListView(films: films, favouritesViewModel: favouritesViewModel)
                     
                 case .error(let error):
                     VStack(spacing: 16) {
@@ -63,16 +59,21 @@ struct FilmsScreen: View {
         }
         .navigationTitle("Studio Ghibli")
         .navigationBarTitleDisplayMode(.large)
+       
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.light, for: .navigationBar)
         .task {
             await filmsViewModel.fetch()
         }
     }
 }
 
-#Preview {
-    FilmsScreen(
-        filmsViewModel: FilmsViewModel(service: MockGhibliService()),
-        favouritesViewModel: FavouritesViewModel(service: MockFavouriteStorage())
-    )
-}
 
+#Preview {
+    NavigationStack {
+        FilmsScreen(
+            filmsViewModel: FilmsViewModel(service: MockGhibliService()),
+            favouritesViewModel: FavouritesViewModel(service: MockFavouriteStorage())
+        )
+    }
+}

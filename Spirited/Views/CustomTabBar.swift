@@ -15,11 +15,13 @@ struct CustomTabBar: View {
     var body: some View {
         VStack(spacing: 0) {
 
+            // Gold gradient indicator at top
             GeometryReader { geo in
-                Rectangle()
-                    .fill(Color.blue)
-                    .frame(width: geo.size.width / 4, height: 3)
-                    .offset(x: CGFloat(selectedTab) * (geo.size.width / 4))
+                Capsule()
+                    .fill(LinearGradient.warmGold)
+                    .frame(width: geo.size.width / 4 - 32, height: 3)
+                    .shadow(color: Color.warmGoldMid.opacity(0.6), radius: 4, x: 0, y: 0)
+                    .offset(x: CGFloat(selectedTab) * (geo.size.width / 4) + 16)
             }
             .frame(height: 3)
 
@@ -51,11 +53,20 @@ struct CustomTabBar: View {
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 12)
-            .background(Color.white)
+            .background(
+                LinearGradient(
+                    colors: [
+                        Color.warmBackgroundTop,
+                        Color.warmBackground
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
         }
         .background(
-            Color.white
-                .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: -2)
+            Color.warmBackgroundTop
+                .shadow(color: Color.warmGoldMid.opacity(0.15), radius: 12, x: 0, y: -3)
         )
         .ignoresSafeArea(edges: .bottom)
     }

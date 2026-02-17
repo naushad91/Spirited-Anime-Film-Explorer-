@@ -6,10 +6,10 @@
 //
 
 
+// MARK: - CustomTabButton
 import SwiftUI
 
 struct CustomTabButton: View {
-
     let icon: String
     let title: String
     let isSelected: Bool
@@ -26,7 +26,11 @@ struct CustomTabButton: View {
                     .font(.system(size: 11, weight: isSelected ? .semibold : .medium))
             }
             .frame(maxWidth: .infinity)
-            .foregroundStyle(isSelected ? Color.blue : Color.gray)
+            .foregroundStyle(
+                isSelected
+                ? AnyShapeStyle(LinearGradient.warmGold)
+                : AnyShapeStyle(Color.warmTextSoft.opacity(0.45))
+            )
             .contentShape(Rectangle())
         }
     }

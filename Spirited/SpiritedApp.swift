@@ -9,9 +9,22 @@ import SwiftUI
 
 @main
 struct SpiritedApp: App {
+    @State private var showLaunch = true
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if showLaunch {
+                LaunchAnimationView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                            withAnimation(.easeInOut(duration: 0.6)) {
+                                showLaunch = false
+                            }
+                        }
+                    }
+            } else {
+                ContentView()
+            }
         }
     }
 }

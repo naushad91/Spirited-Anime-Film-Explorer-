@@ -12,12 +12,17 @@ struct FavouritesScreen: View {
     let filmsViewModel: FilmsViewModel
     let favouritesViewModel: FavouritesViewModel
     var films: [Film] {
-        // TODO: get favorites
+           let favorites = favouritesViewModel.favouriteIDs
+            switch filmsViewModel.state {
+                case .loaded(let films):
+                    return films.filter { favorites.contains($0.id) }
+                default: return []
+            }
+        }
+       // TODO: get favorites
         // retrieve ids from storage
         // get data for favorite ids from films data
-        return []
-    }
-
+       
     var body: some View {
         NavigationStack {
             Group {
