@@ -10,6 +10,7 @@ import SwiftUI
 struct FilmDetailScreen: View {
 
     let film: Film
+    let favouritesViewModel: FavouritesViewModel
     @State private var viewModel = FilmDetailViewModel()
 
     var body: some View {
@@ -43,9 +44,11 @@ struct FilmDetailScreen: View {
                     Text(error)
                         .foregroundStyle(.pink)
                 }
-            }
+            }.padding(20)
         }
-        .padding(20)
+        .toolbar{
+            
+        }
         .task {
             await viewModel.fetch(for: film)
         }
@@ -56,5 +59,8 @@ struct FilmDetailScreen: View {
 }
 
 #Preview {
-    FilmDetailScreen(film: Film.example)
+    NavigationStack {
+        FilmDetailScreen(film: Film.example,
+                         favouritesViewModel: FavouritesViewModel(service: MockFavouriteStorage()))
+    }
 }

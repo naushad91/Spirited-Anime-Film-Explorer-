@@ -11,7 +11,7 @@ struct RootTabContainer: View {
 
     @State private var selectedTab = 0
     @State private var filmsViewModel = FilmsViewModel()
-    
+    @State private var favouritesViewModel = FavouritesViewModel()
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -19,14 +19,12 @@ struct RootTabContainer: View {
             TabView(selection: $selectedTab) {
 
                 NavigationStack {
-                    FilmsScreen(filmsViewModel: filmsViewModel)
-                      
+                    FilmsScreen(filmsViewModel: filmsViewModel, favouritesViewModel: favouritesViewModel)
                 }
                 .tag(0)
-                
-                
+
                 NavigationStack {
-                    FavoritesScreen(filmsViewModel: filmsViewModel)
+                    FavouritesScreen(filmsViewModel: filmsViewModel, favouritesViewModel: favouritesViewModel)
                 }
                 .tag(1)
 
@@ -39,7 +37,9 @@ struct RootTabContainer: View {
                     .tag(3)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-
+            .task {
+                favouritesViewModel.load()
+            }
             CustomTabBar(selectedTab: $selectedTab)
         }
     }

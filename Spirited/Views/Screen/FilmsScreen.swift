@@ -10,6 +10,7 @@ import SwiftUI
 struct FilmsScreen: View {
     
     let filmsViewModel: FilmsViewModel
+    let favouritesViewModel: FavouritesViewModel
         
     var body: some View {
         ZStack {
@@ -44,7 +45,7 @@ struct FilmsScreen: View {
                     }
                     
                 case .loaded(let films):
-                    FilmListView(films: films)
+                    FilmListView(films: films,favouritesViewModel: favouritesViewModel)
                     
                 case .error(let error):
                     VStack(spacing: 16) {
@@ -69,9 +70,9 @@ struct FilmsScreen: View {
 }
 
 #Preview {
-    NavigationStack {
-        FilmsScreen(
-            filmsViewModel: FilmsViewModel(service: MockGhibliService())
-        )
-    }
+    FilmsScreen(
+        filmsViewModel: FilmsViewModel(service: MockGhibliService()),
+        favouritesViewModel: FavouritesViewModel(service: MockFavouriteStorage())
+    )
 }
+
