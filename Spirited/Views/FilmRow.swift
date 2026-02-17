@@ -36,12 +36,7 @@ struct FilmRow: View {
                     
                     Spacer()
                     
-                    Button {
-                        favouritesViewModel.toggleFavourite(filmID: film.id)
-                    } label: {
-                        Image(systemName: isFavourite ? "heart.fill" : "heart")
-                            .foregroundStyle(isFavourite ? Color.pink : Color.gray)
-                    }
+                    FavouriteButton(filmID: film.id, favouritesViewModel: favouritesViewModel)
                     .buttonStyle(.plain)
                     .controlSize(.large)
                 }

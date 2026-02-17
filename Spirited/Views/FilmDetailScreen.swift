@@ -47,7 +47,7 @@ struct FilmDetailScreen: View {
             }.padding(20)
         }
         .toolbar{
-            
+            FavouriteButton(filmID: film.id, favouritesViewModel: favouritesViewModel)
         }
         .task {
             await viewModel.fetch(for: film)
