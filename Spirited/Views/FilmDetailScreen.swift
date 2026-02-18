@@ -14,6 +14,7 @@ struct FilmDetailScreen: View {
     let favouritesViewModel: FavouritesViewModel
     
     @State private var viewModel = FilmDetailViewModel()
+    @State private var isDescriptionExpanded = false
     
     var body: some View {
         ZStack {
@@ -52,7 +53,7 @@ struct FilmDetailScreen: View {
                         // Info grid with icons
                         VStack(spacing: 12) {
                             InfoRow(
-                                icon: "camera.aperture",
+                                icon: "person.circle",
                                 label: "Director",
                                 value: film.director
                             )
@@ -105,16 +106,31 @@ struct FilmDetailScreen: View {
                             .clipShape(Capsule())
                             .padding(.vertical, 8)
                         
-                        // Description
+                        // Description - Expandable
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Description")
-                                .font(.system(size: 20, weight: .bold, design: .serif))
-                                .foregroundStyle(Color.warmGoldDeep)
+                            HStack {
+                                Text("Description")
+                                    .font(.system(size: 20, weight: .bold, design: .serif))
+                                    .foregroundStyle(Color.warmGoldDeep)
+                                
+                                Spacer()
+                                
+                                Button {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                        isDescriptionExpanded.toggle()
+                                    }
+                                } label: {
+                                    Image(systemName: isDescriptionExpanded ? "chevron.up.circle.fill" : "chevron.down.circle.fill")
+                                        .font(.system(size: 22))
+                                        .foregroundStyle(Color.warmGoldDeep)
+                                }
+                            }
                             
                             Text(film.description)
                                 .font(.body)
                                 .foregroundStyle(Color.warmTextMid)
                                 .lineSpacing(4)
+                                .lineLimit(isDescriptionExpanded ? nil : 3)
                         }
                         
                         // Gold divider

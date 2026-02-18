@@ -145,8 +145,10 @@ struct SearchScreen: View {
                                 .font(.system(size: 64))
                                 .foregroundStyle(Color.warmGoldMid.opacity(0.6))
                             Text("No films found")
-                                .font(.title3)
+                                .font(.system(size: 20, weight: .bold, design: .serif))
                                 .foregroundStyle(Color.warmTextDark)
+
+                                
                             Text("Try a different search")
                                 .font(.caption)
                                 .foregroundStyle(Color.warmTextSoft.opacity(0.6))
