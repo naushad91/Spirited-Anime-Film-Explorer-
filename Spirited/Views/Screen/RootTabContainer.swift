@@ -33,8 +33,11 @@ struct RootTabContainer: View {
                 }
                 .tag(2)
 
-                SearchScreen()
-                    .tag(3)
+                NavigationStack {
+                    SearchScreen(favoritesViewModel: favouritesViewModel)
+                }
+                .tag(3)
+//                .opacity(selectedTab == 3 ? 1 : 0)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .task {

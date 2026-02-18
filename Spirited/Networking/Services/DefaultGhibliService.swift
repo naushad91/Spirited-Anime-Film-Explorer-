@@ -28,10 +28,20 @@ struct DefaultGhibliService: GhibliService {
             throw APIError.networkError(error)
         }
     }
+    
+    //Protocol conformance
 
     func fetchFilms() async throws -> [Film] {
         let url = "https://ghibliapi.vercel.app/films"
         return try await fetch(from: url, type: [Film].self)
+    }
+    
+    func searchFilms(with searchTerm: String) async throws -> [Film] {
+        let allFilms = try await fetchFilms()
+        
+        return allFilms.filter { film in
+            film.title.localizedStandardContains(searchTerm)
+        }
     }
 
     func fetchPerson(from URLString: String) async throws -> Person {

@@ -1,41 +1,33 @@
 //
-//  FilmsViewModel.swift
+//  SearchFilmsViewModel.swift
 //  Spirited
 //
-//  Created by Naushad Ali Khan on 16/01/26.
+//  Created by Naushad Ali Khan on 18/02/26.
 //
 
 import Foundation
 import Observation
 
-
 @Observable
-class FilmsViewModel {
+class SearchFilmsViewModel {
     
-//    enum State:Equatable {
-//        case idle
-//        case loading
-//        case loaded([Film])
-//        case error(String)
-//    }
-
     var state: LoadingState<[Film]> = .idle
-        
+    
     private let service: GhibliService
-
+    
     init(service: GhibliService = DefaultGhibliService()) {
         self.service = service
     }
-
     
-    func fetch() async {
-//        guard state == .idle else { return }
-        guard !state.isLoading || state.error != nil else { return }
-
+    func fetch(with searchTerm: String) async {
+        // guard !state.isLoading || state.error != nil else { return }
+        guard !searchTerm.isEmpty else {
+                    return
+                }
         state = .loading
         
         do {
-            let films = try await service.fetchFilms()
+            let films = try await service.searchFilms(with: searchTerm)
             self.state = .loaded(films)
         } catch let error as APIError {
             self.state = .error(error.errorDescription ?? "unknown error")
@@ -43,6 +35,4 @@ class FilmsViewModel {
             self.state = .error("unknown error")
         }
     }
-
-
 }
