@@ -20,7 +20,7 @@ struct FilmsScreen: View {
             VStack(spacing: 0) {
                 // Custom header title
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Studio Ghibli")
+                    Text("Spirited")
                         .font(.system(size: 34, weight: .bold, design: .serif))
                         .foregroundStyle(Color.warmGoldDeep)
 
