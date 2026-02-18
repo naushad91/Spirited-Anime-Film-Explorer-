@@ -26,7 +26,24 @@ struct FavouritesScreen: View {
             LinearGradient.warmBackground
                 .ignoresSafeArea()
 
-            Group {
+            VStack(spacing: 0) {
+                // Custom header title
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Favourites")
+                        .font(.system(size: 34, weight: .bold, design: .serif))
+                        .foregroundStyle(Color.warmGoldDeep)
+
+                    Text("Save your Favourite Movies")
+                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .tracking(1.5)
+                        .foregroundStyle(Color.warmTextSoft.opacity(0.6))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 20)
+                .padding(.top, 16)
+                .padding(.bottom, 16)
+
+                // Content
                 if films.isEmpty {
                     VStack(spacing: 16) {
                         Image(systemName: "heart")
@@ -42,30 +59,13 @@ struct FavouritesScreen: View {
                             .tracking(0.8)
                             .foregroundStyle(Color.warmTextSoft.opacity(0.6))
                     }
-                    .offset(y: -60)
+                    .frame(maxHeight: .infinity)
                 } else {
                     FilmListView(films: films, favouritesViewModel: favouritesViewModel)
                 }
             }
         }
-        .navigationTitle("Favourites")
-        .navigationBarTitleDisplayMode(.large)
-        .toolbarBackground(Color.warmBackgroundTop, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .onAppear {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithTransparentBackground()
-            appearance.backgroundColor = UIColor(Color.warmBackgroundTop)
-            appearance.largeTitleTextAttributes = [
-                .foregroundColor: UIColor(Color.warmGoldDeep),
-                .font: UIFont.systemFont(ofSize: 34, weight: .bold)
-            ]
-            appearance.titleTextAttributes = [
-                .foregroundColor: UIColor(Color.warmGoldDeep)
-            ]
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        }
+        .navigationBarHidden(true)
     }
 }
 
