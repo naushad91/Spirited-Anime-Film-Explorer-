@@ -96,7 +96,7 @@ struct SearchScreen: View {
 
                 case .idle:
                     VStack(spacing: 16) {
-                        Image(systemName: "magnifyingglass.circle")
+                        Image(systemName: "magnifyingglass")
                             .font(.system(size: 64))
                             .foregroundStyle(Color.warmGoldMid.opacity(0.6))
                         
@@ -110,6 +110,7 @@ struct SearchScreen: View {
                             .foregroundStyle(Color.warmTextSoft.opacity(0.6))
                     }
                     .frame(maxHeight: .infinity)
+                    .offset(y: -80)
 
                 case .loading:
                     VStack(spacing: 16) {
@@ -121,6 +122,7 @@ struct SearchScreen: View {
                             .foregroundStyle(Color.warmTextSoft.opacity(0.6))
                     }
                     .frame(maxHeight: .infinity)
+                    .offset(y: -80)
 
                 case .error(let error):
                     VStack(spacing: 16) {
@@ -134,6 +136,7 @@ struct SearchScreen: View {
                             .padding(.horizontal, 32)
                     }
                     .frame(maxHeight: .infinity)
+                    .offset(y: -80)
 
                 case .loaded(let films):
                     if films.isEmpty {
@@ -149,6 +152,7 @@ struct SearchScreen: View {
                                 .foregroundStyle(Color.warmTextSoft.opacity(0.6))
                         }
                         .frame(maxHeight: .infinity)
+                        .offset(y: -80)
                     } else {
                         FilmListView(
                             films: films,

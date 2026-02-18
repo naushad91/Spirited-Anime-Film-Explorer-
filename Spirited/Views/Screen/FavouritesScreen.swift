@@ -60,6 +60,7 @@ struct FavouritesScreen: View {
                             .foregroundStyle(Color.warmTextSoft.opacity(0.6))
                     }
                     .frame(maxHeight: .infinity)
+                    .offset(y: -80)
                 } else {
                     FilmListView(films: films, favouritesViewModel: favouritesViewModel)
                 }
