@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8765A07F2F49AF43004D7437 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8765A07E2F49AF37004D7437 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		874D91762F17D3E6007B4FA9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		874D91682F17D3E5007B4FA9 /* Spirited.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spirited.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		874D91752F17D3E6007B4FA9 /* SpiritedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpiritedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		874D917F2F17D3E6007B4FA9 /* SpiritedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpiritedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8765A07E2F49AF37004D7437 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		874D915F2F17D3E5007B4FA9 = {
 			isa = PBXGroup;
 			children = (
+				8765A07E2F49AF37004D7437 /* README.md */,
 				874D916A2F17D3E5007B4FA9 /* Spirited */,
 				874D91782F17D3E6007B4FA9 /* SpiritedTests */,
 				874D91822F17D3E6007B4FA9 /* SpiritedUITests */,
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8765A07F2F49AF43004D7437 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
