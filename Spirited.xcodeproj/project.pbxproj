@@ -50,6 +50,11 @@
 			path = SpiritedUITests;
 			sourceTree = "<group>";
 		};
+		8765A0802F49B886004D7437 /* Screenshots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +85,7 @@
 		874D915F2F17D3E5007B4FA9 = {
 			isa = PBXGroup;
 			children = (
+				8765A0802F49B886004D7437 /* Screenshots */,
 				8765A07E2F49AF37004D7437 /* README.md */,
 				874D916A2F17D3E5007B4FA9 /* Spirited */,
 				874D91782F17D3E6007B4FA9 /* SpiritedTests */,
@@ -115,6 +121,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				874D916A2F17D3E5007B4FA9 /* Spirited */,
+				8765A0802F49B886004D7437 /* Screenshots */,
 			);
 			name = Spirited;
 			packageProductDependencies = (

@@ -1,29 +1,11 @@
-//
-//  README.md
-//  Spirited
-//
-//  Created by Naushad Ali Khan on 21/02/26.
-//
-
 # 🌿 Spirited — Explore the Ghibliverse
 
-> A modern SwiftUI iOS application built using the Studio Ghibli API.
-> Clean architecture, async/await networking, search with debounce, favourites persistence, and reusable state management.
+&gt; A modern SwiftUI iOS application built using the Studio Ghibli API.
+&gt; Clean architecture, async/await networking, search with debounce, favourites persistence, and reusable state management.
 
 ---
 
 ## 📱 About the Project
-
-
-## 📸 Screenshots
-
-(Add screenshots here)
-
-```markdown
-#imageLiteral(resourceName: "Launchscreen.png")#imageLiteral(resourceName: "Favourites.png")#imageLiteral(resourceName: "FilmsScreen.png")#imageLiteral(resourceName: "favourites_emptystate.png")#imageLiteral(resourceName: "Settings.png")#imageLiteral(resourceName: "Search_emptystate.png")#imageLiteral(resourceName: "Search.png")
-#imageLiteral(resourceName: "DetailScreen1.png")
-#imageLiteral(resourceName: "DetailScreen2.png")
-```
 
 **Spirited** is a SwiftUI-based iOS app that allows users to:
 
@@ -34,6 +16,35 @@
 * Persist favourites locally
 * Experience a custom themed UI
 * Navigate using a custom tab bar
+
+---
+
+## 📸 Screenshots
+
+### Launch & Main Screens
+&lt;p align="center"&gt;
+  &lt;img src="Screenshots/Launchscreen.png" width="250" /&gt;
+  &lt;img src="Screenshots/FilmsScreen.png" width="250" /&gt;
+  &lt;img src="Screenshots/Favourites.png" width="250" /&gt;
+&lt;/p&gt;
+
+### Detail Screens
+&lt;p align="center"&gt;
+  &lt;img src="Screenshots/DetailScreen1.png" width="250" /&gt;
+  &lt;img src="Screenshots/DetailScreen2.png" width="250" /&gt;
+&lt;/p&gt;
+
+### Search & Settings
+&lt;p align="center"&gt;
+  &lt;img src="Screenshots/Search.png" width="250" /&gt;
+  &lt;img src="Screenshots/Search_emptystate.png" width="250" /&gt;
+  &lt;img src="Screenshots/Settings.png" width="250" /&gt;
+&lt;/p&gt;
+
+### Empty States
+&lt;p align="center"&gt;
+  &lt;img src="Screenshots/favourites_emptystate.png" width="250" /&gt;
+&lt;/p&gt;
 
 ---
 
@@ -59,7 +70,6 @@ Built with:
 **Studio Ghibli API**
 
 * Base URL:
-
 ```
 https://ghibliapi.vercel.app/
 ```
