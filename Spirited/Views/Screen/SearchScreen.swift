@@ -30,21 +30,10 @@ struct SearchScreen: View {
 
             VStack(spacing: 0) {
                 // Custom header title
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Search")
-                        .font(.system(size: 34, weight: .bold, design: .serif))
-                        .foregroundStyle(Color.warmGoldDeep)
-
-                    Text("Explore the Ghibliverse")
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
-                        .tracking(1.5)
-                        .foregroundStyle(Color.warmTextSoft.opacity(0.6))
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 20)
-                .padding(.top, 16)
-                .padding(.bottom, 12)
-
+                ScreenHeader(
+                    title: "Search",
+                    subtitle: "Explore the Ghibliverse"
+                )
                 // Custom search bar
                 HStack(spacing: 12) {
                     Image(systemName: "magnifyingglass")

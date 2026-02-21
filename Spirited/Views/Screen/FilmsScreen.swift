@@ -19,17 +19,15 @@ struct FilmsScreen: View {
 
             VStack(spacing: 0) {
                 // Custom header title
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Spirited")
-                        .font(.system(size: 34, weight: .bold, design: .serif))
-                        .foregroundStyle(Color.warmGoldDeep)
-
-                    Text("Explore Magical Ghibli Movies")
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
-                        .tracking(1.5)
-                        .foregroundStyle(Color.warmTextSoft.opacity(0.6))
-                       
-                    HStack{
+                VStack(alignment: .leading, spacing: 0) {
+                    // Reusable header
+                    ScreenHeader(
+                        title: "Spirited",
+                        subtitle: "Explore Magical Ghibli Movies"
+                    )
+                    
+                    // Extra content below header
+                    HStack {
                         Label {
                             Text("Director")
                                 .font(.subheadline)
@@ -52,13 +50,9 @@ struct FilmsScreen: View {
                                 .foregroundStyle(Color.warmGoldDeep)
                         }
                     }
-                    
-
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 16)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 20)
-                .padding(.top, 16)
-                .padding(.bottom, 16)
 
                 // Content
                 Group {

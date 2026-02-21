@@ -29,21 +29,11 @@ struct SettingsScreen: View {
             ScrollView {
                 VStack(spacing: 0) {
                     // Custom header
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Settings")
-                            .font(.system(size: 34, weight: .bold, design: .serif))
-                            .foregroundStyle(Color.warmGoldDeep)
-                        
-                        Text("Customize Your Experience")
-                            .font(.system(size: 13, weight: .medium, design: .rounded))
-                            .tracking(1.5)
-                            .foregroundStyle(Color.warmTextSoft.opacity(0.6))
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 16)
-                    .padding(.bottom, 20)
-                    
+                    ScreenHeader(
+                        title: "Settings",
+                        subtitle: "Customize Your Experience"
+                    )
+
                     VStack(spacing: 20) {
                         // Appearance Section
                         VStack(alignment: .leading, spacing: 12) {
