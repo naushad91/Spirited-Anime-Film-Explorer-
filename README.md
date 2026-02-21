@@ -1,7 +1,7 @@
 # 🌿 Spirited — Explore the Ghibliverse
 
-&gt; A modern SwiftUI iOS application built using the Studio Ghibli API.
-&gt; Clean architecture, async/await networking, search with debounce, favourites persistence, and reusable state management.
+** A modern SwiftUI iOS application built using the Studio Ghibli API.
+** Clean architecture, async/await networking, search with debounce, favourites persistence, and reusable state management.
 
 ---
 
@@ -21,30 +21,23 @@
 
 ## 📸 Screenshots
 
-### Launch & Main Screens
-&lt;p align="center"&gt;
-  &lt;img src="Screenshots/Launchscreen.png" width="250" /&gt;
-  &lt;img src="Screenshots/FilmsScreen.png" width="250" /&gt;
-  &lt;img src="Screenshots/Favourites.png" width="250" /&gt;
-&lt;/p&gt;
+### LaunchScreen and MainScren with DetailViewScreen
+<img width="1206" height="2622" alt="Launchscreen" src="https://github.com/user-attachments/assets/d0697637-9ed2-4bf3-b84f-f64ddba00b61" />
+<img width="1206" height="2622" alt="FilmsScreen" src="https://github.com/user-attachments/assets/30d47364-d704-4a34-9a34-2ca77a302496" />
+<img width="1206" height="2622" alt="DetailScreen1" src="https://github.com/user-attachments/assets/c585190d-d088-44b3-ae36-0af5a954d199" />
+<img width="1206" height="2622" alt="DetailScreen2" src="https://github.com/user-attachments/assets/49857d42-5540-424e-8fdf-6302df79499a" />
 
-### Detail Screens
-&lt;p align="center"&gt;
-  &lt;img src="Screenshots/DetailScreen1.png" width="250" /&gt;
-  &lt;img src="Screenshots/DetailScreen2.png" width="250" /&gt;
-&lt;/p&gt;
+### FavouritesScreen
+<img width="1206" height="2622" alt="Favourites" src="https://github.com/user-attachments/assets/2460b041-e6bd-4e92-9586-6cdc92816a85" />
+<img width="1206" height="2622" alt="favourites_emptystate" src="https://github.com/user-attachments/assets/c851b272-5258-4067-95e1-9077bfd8db62" />
 
-### Search & Settings
-&lt;p align="center"&gt;
-  &lt;img src="Screenshots/Search.png" width="250" /&gt;
-  &lt;img src="Screenshots/Search_emptystate.png" width="250" /&gt;
-  &lt;img src="Screenshots/Settings.png" width="250" /&gt;
-&lt;/p&gt;
+### SettingsScreen
+<img width="1206" height="2622" alt="Settings" src="https://github.com/user-attachments/assets/e54613eb-e5b4-4932-9f27-86c5f03c4333" />
 
-### Empty States
-&lt;p align="center"&gt;
-  &lt;img src="Screenshots/favourites_emptystate.png" width="250" /&gt;
-&lt;/p&gt;
+### SearchScreen
+<img width="1206" height="2622" alt="Search" src="https://github.com/user-attachments/assets/3d65d970-3865-4aa7-aabe-12c6a54d795b" />
+<img width="1206" height="2622" alt="Search_emptystate" src="https://github.com/user-attachments/assets/4ef99881-c6bf-4443-a30f-1879c6fc03b6" />
+
 
 ---
 
